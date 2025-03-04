@@ -69,8 +69,42 @@ setTimeout(() => {
         }
     }
 
-    // Execute the modifications after a 3-second delay
+    // Function to modify the scores on the scores page (total score and score distribution)
+    function modifyScorePage() {
+        // Update total score values on the scores page to 1560
+        const totalScoreElements = document.querySelectorAll('[data-qc-id="ds-tot-score"], [data-qc-id="ds-ss-tot"]');
+        if (totalScoreElements.length > 0) {
+            totalScoreElements.forEach(el => {
+                el.textContent = '1560';
+            });
+        } else {
+            console.warn('No total score elements found on the scores page');
+        }
+
+        // Update Reading and Writing score to 770
+        const readingWritingScoreElements = document.querySelectorAll('[data-qc-id="ds-Reading and Writing-score"]');
+        if (readingWritingScoreElements.length > 0) {
+            readingWritingScoreElements.forEach(el => {
+                el.textContent = '770';
+            });
+        } else {
+            console.warn('No Reading and Writing score elements found on the scores page');
+        }
+
+        // Update Math score to 790
+        const mathScoreElements = document.querySelectorAll('[data-qc-id="ds-Math-score"]');
+        if (mathScoreElements.length > 0) {
+            mathScoreElements.forEach(el => {
+                el.textContent = '790';
+            });
+        } else {
+            console.warn('No Math score elements found on the scores page');
+        }
+    }
+
+    // Execute all modifications after a 3-second delay
     removeSatDec7();
     modifyPsat2023();
     modifySatCard();
+    modifyScorePage();
 }, 3000);
